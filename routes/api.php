@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\PassportAuthController;
+use App\Http\Controllers\TodoController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -20,4 +21,6 @@ Route::post('login', [PassportAuthController::class, 'login']);
   
 Route::middleware('auth:api')->group(function () {
     Route::get('get-user', [PassportAuthController::class, 'userInfo']);
+    Route::resource('todo', TodoController::class);
 });
+
