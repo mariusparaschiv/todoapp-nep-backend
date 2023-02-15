@@ -75,4 +75,16 @@ class TodoController extends Controller
           return response()->json(['error' => 'Unauthorised'], 401);
       }
   }
+
+  public function complete($id)
+  {
+      $todo = Todo::find($id);
+      if ($todo->user_id == Auth::user()->id) {
+          $todo->completed = true;
+          $todo->save();
+          return response()->json($todo);
+      } else {
+          return response()->json(['error' => 'Unauthorised'], 401);
+      }
+  }
 }

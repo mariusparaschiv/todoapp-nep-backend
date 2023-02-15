@@ -22,5 +22,6 @@ Route::post('login', [PassportAuthController::class, 'login']);
 Route::middleware('auth:api')->group(function () {
     Route::get('get-user', [PassportAuthController::class, 'userInfo']);
     Route::resource('todo', TodoController::class);
+    Route::post('todo/{id}/complete', [TodoController::class, 'complete']);
 });
 
