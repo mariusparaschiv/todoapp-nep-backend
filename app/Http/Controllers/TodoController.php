@@ -51,7 +51,7 @@ class TodoController extends Controller
       $this->validate($request, [
         'title' => 'required|string|max:255',
         'description' => 'nullable|string',
-        'completed' => 'boolean',
+        'completed' => 'nullable|boolean',
       ]);
       $todo = Todo::find($id);
       if ($todo->user_id == Auth::user()->id) {
